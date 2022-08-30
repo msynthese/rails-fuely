@@ -4,10 +4,16 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name avatar fuel_preference brand_preference])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name avatar fuel_preference])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update,
-                                    keys: %i[first_name last_name avatar fuel_preference brand_preference])
+                                    keys: %i[first_name last_name avatar fuel_preference])
+  end
+
+  private
+  # Overwriting the sign_out redirect path method
+  def after_sign_up_path_for(resource)
+    edit_user_registration_path
   end
 end
