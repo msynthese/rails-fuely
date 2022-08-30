@@ -1,0 +1,9 @@
+<h1>My favorite locations</h1>
+<ul>
+  <% @locations.each do | location | %>
+    <li>
+      <%= location.name %>
+    </li>
+  <% end %>
+</ul>
+<%=current_user.id %>
