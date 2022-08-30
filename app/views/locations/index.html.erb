@@ -1,23 +1,38 @@
+<template>
+  <b-icon icon="star-fill" class="rounded-circle bg-warning p-2" variant="light"></b-icon>
+  <b-icon icon="star-fill" class="border border-info rounded p-2" variant="info"></b-icon>
+</template>
 <div class="container">
-  <br>
+  <header>
+    <h1>Favorite Locations</h1>
+  </header>
   <div class="row">
-    <div class="col rounded-4" style="background:white">
-      <i class="fa-solid fa-star"></i>
-      <h2><em>My favorite locations </em></h2>
+    <div class="col rounded-4 shadow p-3" style="background:white">
+      <h4><em>My favorite locations </em></h4>
+      <div style="text-align:left; padding-left:6px"
+      class="icon-large fa-regular fa-star rounded-4 btn-warning text-start" type="button">
+      </div>
     </div>
   </div>
   <br>
-  <div class="col rounded-4" style="background:white">
-    <h5> location_user.id</h5>
+  <div class="row col rounded-4 shadow p-3" style="background:white">
+    <h4> location_user.id</h4>
     <% @locations.each do | location | %>
-    </div>
-    <%= location.name %>
-  <% end %>
+      <%= location.name %>
+    <% end %>
+  </div>
   <br>
-  <div class="col rounded-4" style="background:white">
-    <div class="row">
-      <h5> current_user.id</h5>
-      <%=current_user.id %>
+  <div class="row col rounded-4 shadow p-3" style="background:white">
+    <div class="">
+      <ul><%=current_user.id %></ul>
+      <h4> current_user.id</h4>
     </div>
   </div>
+</div>
+<%# 3buttons différents en dessus ///// p-3 p-4-p5 for Space bettwen buttons%>
+<div class="text-center p-3">
+  <button class="btn btn-outline-warning rounded-4" type="button">New Search</button>
+</div>
+<div class="text-center p-2">
+  <button type="button" class="btn btn-primary btn-lg btn-block rounded-4 shadow-lg bg-blue">New Search</button>
 </div>
