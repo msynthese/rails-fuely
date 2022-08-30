@@ -1,9 +1,23 @@
-<h1>My favorite locations</h1>
-<ul>
-  <% @locations.each do | location | %>
-    <li>
-      <%= location.name %>
-    </li>
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col rounded-4" style="background:white">
+      <i class="fa-solid fa-star"></i>
+      <h2><em>My favorite locations </em></h2>
+    </div>
+  </div>
+  <br>
+  <div class="col rounded-4" style="background:white">
+    <h5> location_user.id</h5>
+    <% @locations.each do | location | %>
+    </div>
+    <%= location.name %>
   <% end %>
-</ul>
-<%=current_user.id %>
+  <br>
+  <div class="col rounded-4" style="background:white">
+    <div class="row">
+      <h5> current_user.id</h5>
+      <%=current_user.id %>
+    </div>
+  </div>
+</div>
