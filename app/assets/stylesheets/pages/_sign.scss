@@ -27,4 +27,35 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+
+}
+.radio{
+    input[type="radio"] {
+    display:none;
+  }
+  .user_fuel_preference {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  label {
+    width: 70px;
+    text-align: center;
+    border: 1px solid #DDD;
+    border-radius:5px;
+    padding:10px;
+    margin-top:10px;
+    display:block;
+    // position:relative;
+    background-color:rgb(144, 144, 144);
+  }
+
+  label:hover {
+    cursor:pointer;
+    background-color:lightblue;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color:#0d6efd;
+  }
 }
