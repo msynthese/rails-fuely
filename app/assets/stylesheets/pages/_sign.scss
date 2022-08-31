@@ -5,3 +5,25 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.form-login{
+  padding: 10px 20px;
+  margin-top: 30px;
+  border-radius: 3px;
+  h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.edit-background{
+  background-image: image-url('station.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

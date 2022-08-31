@@ -13,15 +13,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Overwriting the sign_up redirect path method
-  def after_sign_up_path_for(resource)
-    puts("enter in after-sign-in")
-    edit_user_registration_path
-  end
-
   # Overwriting the sign_ou redirect path method
   def after_sign_out_path_for(resource)
-    puts("enter in after-sign-out")
     root_path
   end
 end
