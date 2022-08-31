@@ -6,5 +6,5 @@ class User < ApplicationRecord
   enum fuel_preference: %i[None SP95 SP98 E10 E85 Gazole GPLc]
   has_many :locations, dependent: :destroy
   belongs_to :brand, optional: true
-
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
