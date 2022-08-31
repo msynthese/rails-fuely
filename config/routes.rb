@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :locations, only: %i[index create]
   resources :brands, only: %i[index create]
   resources :stations, only: %i[index show]
+  get "stations_map", to: "stations#index_map"
 end
