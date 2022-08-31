@@ -1,0 +1,10 @@
+<h1>Stations Index Page</h1>
+<div data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" >
+  <%= form_tag do  %>
+    <%= text_field_tag :address, nil, data: { map_target: 'searchInput', action: "blur->map#searchStation"} %>
+  <% end  %>
+  <div style="width: 100%; height: 600px;"
+  data-map-target="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+></div>
+</div>
