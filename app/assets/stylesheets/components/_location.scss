@@ -8,9 +8,20 @@
 
 .location_address {
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.star-img img {
-  width: 40px;
-  height: 40px;
+.star-img {
+  display: inline;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
+
+// .btn {
+//   position: relative;
+// }
