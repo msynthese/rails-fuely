@@ -1,35 +1,29 @@
 <html>
   <head>
     <style>
-      /* .block {
-      overflow: hidden;
-      background: #ffff;
-      padding: 1rem;
-      margin: 0 0 1rem 0;
-      } */
       .block img {
-        padding: 5px;
-      width: 75px;
-      height: 75px;
+      padding: 23px;
+      width: 50px;
+      height: 50px;
       float: left;
-      margin: 0 1rem 0 0;
-      radius: 50%;
-      }
-      .block h2 {
-      margin: 0 0 0.5rem 0;
+      margin: 1px;
+      border-radius: 50%;
       }
 
       .block {
       display: grid;
       grid-template-columns: 100px 1fr 100px;
+      box-shadow: 2px 2px 2px grey;
       }
-            {
+            /* {
       box-sizing: border-box;
-            }
+            } */
 
-            .column {
-            float: left;
-            width: 50%;
+            .filter-box {
+              display:flex;
+            }
+            .filter-item {
+              flex-grow:1;
             }
 
             .row:after {
@@ -37,82 +31,51 @@
             display: table;
             clear: both;
             }
-
-            .img-map {
-      width: 45px;
-      height: 45px;
-            }
+      .map-img {
+        width: 45px;
+        height: 45px;
+      }
+      .title-img{
+        display: flex;
+        justify-content: flex-end;
+        box-sizing: border-box;
+      }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <div class="text-center"><img class="img-map" src="https://cdn-icons-png.flaticon.com/512/235/235861.png"></img></div>
-    <h1>Around_location:name</h1>
-  </div>
-  <div class="row m-4">
-    <div class="column rounded-5 text-center" style="background-color:#FFB695;">
-      <h2>Cheaper</h2>
-      <p>blabla</p>
-    </div>
-    <div class="column rounded-5 text-center" style="background-color:#96D1CD;">
-      <h2>Closer</h2>
-      <p>blabla</p>
-    </div>
-    <div class="column-long rounded-4 p-2 m-2 text-center" style="background-color:grey;">
-      <h1>Select your preference</h1>
-    </div>
-  </div>
-</div>
-</body>
 </html>
-<div class="row p-5 m-2">
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
+<div class="container">
+  <h1 class="title-img flex-wrap: wrap">
+    <img class="map-img" src="https://cdn-icons-png.flaticon.com/512/235/235861.png" />
+  </h1>
+  <div class="col filter-box" >
+    <div class="filter-item m-2 rounded-5 text-center p-3 flex-wrap: wrap btn btn-inline-success" style="background-color:#1EDD88; box-shadow: 2px 2px 2px grey">
+      <h2>Cheaper</h2>
     </div>
-    <p>CHF 2.02.-</p>
-  </div>
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
+    <div class="filter-item m-2 rounded-5 text-center p-3 flex-wrap: wrap btn btn-inline-warning" style="background-color:#FFC65A; box-shadow: 2px 2px 2px grey">
+      <h2>Closer</h2>
     </div>
-    <p>CHF 2.02.-</p>
   </div>
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
+  <div class="col p-2 m-4 rounded-4 text-center flex-wrap: rounded" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+    <h4>Select your preference</h4>
+  </div>
+  <div class="col m-4">
+    <div class="block rounded-4 flex-wrap: wrap ;" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+      <img src="IMAGE URL" style="rounded-4">
+      <div>
+        <p class="fs-5">Kilometers left</p>
+        <p>Address details</p>
+      </div>
+      <p>CHF 2.02.-</p>
     </div>
-    <p>CHF 2.02.-</p>
   </div>
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
+  <div class="col m-4 p-1">
+    <div class="block rounded-4 flex-wrap: wrap;" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+      <img src="IMAGE URL" style="rounded-4">
+      <div>
+        <p class="fs-5">Kilometers left</p>
+        <p>Address details</p>
+      </div>
+      <p>CHF 2.02.-</p>
     </div>
-    <p>CHF 2.02.-</p>
   </div>
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
-    </div>
-    <p>CHF 2.02.-</p>
-  </div>
-  <div class="block" style="background-color:grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div>
-      <h2>Kilometers left</h2>
-      <p>Address details</p>
-    </div>
-    <p>CHF 2.02.-</p>
-  </div>
-</div>
 </div>
