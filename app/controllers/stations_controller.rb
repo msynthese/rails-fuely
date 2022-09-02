@@ -19,5 +19,6 @@ class StationsController < ApplicationController
       format.html
       format.json { render json: @markers.to_json }
     end
+    
   end
 end
