@@ -1,0 +1,11 @@
+.main-container {
+  display: flex;
+}
+#price {
+  height:255px;
+  overflow-y: scroll;
+}
+
+#map {
+  flex-grow: 1;
+}
