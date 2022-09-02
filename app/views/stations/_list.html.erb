@@ -89,28 +89,7 @@
   <div class="col p-2 m-4 rounded-4 text-center flex-wrap: rounded" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
     <h4>Select your preference</h4>
   </div>
-  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div class="card-product-infos">
-      <p class="fs-5"><strong>Kilometers left</strong></p>
-      <h2><strong>Address details</strong></h2>
-      <p><strong>CHF 2.02.-</strong></p>
-    </div>
-  </div>
-  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div class="card-product-infos">
-      <p class="fs-5"><strong>Kilometers left</strong></p>
-      <h2><strong>Address details</strong></h2>
-      <p><strong>CHF 2.02.-</strong></p>
-    </div>
-  </div>
-  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
-    <img src="IMAGE URL" style="rounded-4">
-    <div class="card-product-infos">
-      <p class="fs-5"><strong>Kilometers left</strong></p>
-      <h2><strong>Address details</strong></h2>
-      <p><strong>CHF 2.02.-</strong></p>
-    </div>
+  <div id="station-list">
+    <%= render 'list_stations', markers: markers %>
   </div>
 </div>

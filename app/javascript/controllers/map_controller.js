@@ -35,7 +35,10 @@ export default class extends Controller {
         'Content-Type': 'application/json'
       }})
       .then(data => data.json())
-      .then(data => this.#addMarkersToMap(data) )
+      .then(data => {
+        this.#addMarkersToMap(data.markers)
+        document.getElementById("station-list").innerHTML = data.list
+       } )
     })
 
     this.#addMarkersToMap(this.markersValue)
