@@ -15,9 +15,6 @@
       grid-template-columns: 100px 1fr 100px;
       box-shadow: 2px 2px 2px grey;
       }
-            /* {
-      box-sizing: border-box;
-            } */
 
             .filter-box {
               display:flex;
@@ -31,6 +28,7 @@
             display: table;
             clear: both;
             }
+
       .map-img {
         width: 45px;
         height: 45px;
@@ -39,6 +37,39 @@
         display: flex;
         justify-content: flex-end;
         box-sizing: border-box;
+      }
+      .card-product {
+        overflow: hidden;
+        height: 120px;
+        background: white;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        margin: 15px;
+      }
+
+      .card-product img {
+        height: 100%;
+        width: 120px;
+        object-fit: cover;
+      }
+
+      .card-product h2 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .card-product p {
+        font-size: 12px;
+        line-height: 1.4;
+        opacity: .7;
+        margin-bottom: 0;
+        margin-top: 8px;
+      }
+
+      .card-product .card-product-infos {
+        padding: 16px;
       }
     </style>
   </head>
@@ -58,24 +89,28 @@
   <div class="col p-2 m-4 rounded-4 text-center flex-wrap: rounded" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
     <h4>Select your preference</h4>
   </div>
-  <div class="col m-4">
-    <div class="block rounded-4 flex-wrap: wrap ;" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
-      <img src="IMAGE URL" style="rounded-4">
-      <div>
-        <p class="fs-5">Kilometers left</p>
-        <p>Address details</p>
-      </div>
-      <p>CHF 2.02.-</p>
+  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+    <img src="IMAGE URL" style="rounded-4">
+    <div class="card-product-infos">
+      <p class="fs-5"><strong>Kilometers left</strong></p>
+      <h2><strong>Address details</strong></h2>
+      <p><strong>CHF 2.02.-</strong></p>
     </div>
   </div>
-  <div class="col m-4 p-1">
-    <div class="block rounded-4 flex-wrap: wrap;" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
-      <img src="IMAGE URL" style="rounded-4">
-      <div>
-        <p class="fs-5">Kilometers left</p>
-        <p>Address details</p>
-      </div>
-      <p>CHF 2.02.-</p>
+  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+    <img src="IMAGE URL" style="rounded-4">
+    <div class="card-product-infos">
+      <p class="fs-5"><strong>Kilometers left</strong></p>
+      <h2><strong>Address details</strong></h2>
+      <p><strong>CHF 2.02.-</strong></p>
+    </div>
+  </div>
+  <div class="card-product rounded-4 p-3" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey">
+    <img src="IMAGE URL" style="rounded-4">
+    <div class="card-product-infos">
+      <p class="fs-5"><strong>Kilometers left</strong></p>
+      <h2><strong>Address details</strong></h2>
+      <p><strong>CHF 2.02.-</strong></p>
     </div>
   </div>
 </div>
