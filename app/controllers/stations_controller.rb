@@ -4,6 +4,7 @@ class StationsController < ApplicationController
     lat = params["lat"]
     lon = params["lon"]
     @stations = StationsService.find(lat, lon)
+    puts(@stations.count)
     @markers = []
     # The `geocoded` scope filters only flats with coordinates
     @markers = @stations.map do |station|
