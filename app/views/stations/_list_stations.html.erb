@@ -4,8 +4,16 @@
     <div class="card-product-infos">
       <p class="fs-5"><strong><%= m[:name] %></strong></p>
       <h2><strong><%= "#{m[:address]}, #{m[:city]}" %></strong></h2>
-      <p> <strong> Gazole: </strong> <%= m[:gazole] %> </p>
-      <p> <strong> SP98: </strong> <%= m[:sp98] %> </p>
+      <% if m[:gazole] < 0.01%>
+        <p><strong> Gazole: </strong> <%= m[:gazole]*1000 %></p>
+      <% else %>
+        <p><strong> Gazole: </strong> <%= m[:gazole] %></p>
+      <%end%>
+      <% if m[:sp98] != nil && m[:sp98] < 0.01%>
+        <p><strong> SP98: </strong> <%= m[:sp98]*1000 %></p>
+      <% else%>
+        <p><strong> SP98: </strong> <%= m[:sp98] %></p>
+      <%end%>
     </div>
   </div>
   <p></p>
