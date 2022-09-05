@@ -27,7 +27,7 @@ export default class extends Controller {
       zoom: 10
     })
     this.#stationApi(lat,lon)
-    // this.#fitMapToMarkers()
+    this.#fitMapToMarkers()
     this.geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl })
 
@@ -53,8 +53,15 @@ export default class extends Controller {
   }
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    console.log("inFitMapToMarker******")
+    this.markersValue.forEach(marker => {
+      console.log(marker)
+      bounds.extend([ marker.lng, marker.lat ])
+    })
+    if (this.markersValue.length > 0) {
+      this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    }
+
   }
 
   #addMarkersToMap(markers) {

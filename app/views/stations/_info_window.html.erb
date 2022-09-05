@@ -1,2 +1,30 @@
-<h2><%= station["fields"]["name"] %></h2>
-<p><%= station["fields"]["brand"] %></p>
+<h6><%= station["fields"]["name"] %></h6>
+<p><%= station["fields"]["address"] %> <%= station["fields"]["city"] %></p>
+<div class="row d-flex justify-content-between">
+  <div class="col-6 text-start">
+    <p><%= station["fields"]["brand"] %></p>
+  </div>
+  <div class="col-6 text-end">
+    <p>Gazole: <%= station["fields"]["price_gazole"] %></p>
+  </div>
+  <div class="col-6 text-start">
+    <p>SP98: <%= station["fields"]["price_sp98"] %></p>
+  </div>
+  <div class="col-6 text-end">
+    <p>SP95: <%= station["fields"]["price_sp95"] %></p>
+  </div>
+  <div class="col-6 text-start">
+    <p>e10: <%= station["fields"]["price_e10"] %></p>
+  </div>
+</div>
+<!--ADD CASE CONDITIONS FOR USER'S FUEL PREFERENCE-->
+<!--
+<p><%= station["fields"]["price_gazole"] %></p>
+<p><%= station["fields"]["price_sp98"] %></p>
+<p><%= station["fields"]["price_sp95"] %></p>
+<p><%= station["fields"]["price_e10"] %></p>
+-->
+<!--LAST UPDATE VS NOW-->
+<p><%#= station["fields"]["update"] %></p>
+<!--LAST UPDATE VS SEARCH MARKER GEO(PLACE FROM WHERE SEARCH LAUNCHED)-->
+<p><%#= station["fields"]["dist"] %></p>
