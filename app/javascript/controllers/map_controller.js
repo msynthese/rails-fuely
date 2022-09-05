@@ -21,8 +21,8 @@ export default class extends Controller {
       zoom: 8
 
     })
-    const lat = center[1]
-    const lon = center[0]
+    const lat = 2.33333
+    const lon = 48.866669
     this.#callApi(lat,lon)
   }
   connect() {
@@ -63,7 +63,7 @@ export default class extends Controller {
 
   #addMarkersToMap(markers) {
     markers.forEach((marker) => {
-     // const popup = new mapboxgl.Popup().setHTML(marker.info_window) // Add this
+     const popup = new mapboxgl.Popup().setHTML(marker.info_window) // Add this
 
           // Create a HTML element for your custom marker
       // const customMarker = document.createElement("div")
@@ -76,7 +76,7 @@ export default class extends Controller {
        // Pass the element as an argument to the new marker
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        //.setPopup(popup) // Add this
+        .setPopup(popup) // Add this
         .addTo(this.map)
     });
   }

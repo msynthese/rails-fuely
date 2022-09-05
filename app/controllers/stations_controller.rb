@@ -7,7 +7,6 @@ class StationsController < ApplicationController
 
     @markers = []
     # The `geocoded` scope filters only flats with coordinates
-
     @markers = @stations.map do |station|
       {
         lat: station["geometry"]["coordinates"][1],
@@ -28,12 +27,14 @@ class StationsController < ApplicationController
         dist: station["fields"]["dist"],
         services: station["fields"]["services"],
         automate_24_24: station["fields"]["automate_24_24"],
-        api_station_id: station["fields"]["id"]
-        # info_window: render_to_string(partial: "info_window", locals: { station: station }),
+        api_station_id: station["fields"]["id"],
+        info_window: render_to_string(partial: "info_window", locals: { station: }, formats: [:html])
         # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
       }
 
     end
+
+
 
     list_string = render_to_string partial: 'list_stations', locals: { markers: @markers }, formats: [:html]
     respond_to do |format|
