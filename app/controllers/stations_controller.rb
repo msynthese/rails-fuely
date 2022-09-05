@@ -13,10 +13,19 @@ class StationsController < ApplicationController
         lat: station["geometry"]["coordinates"][1],
         lng: station["geometry"]["coordinates"][0],
         name: station["fields"]["name"],
+        brand: station["fields"]["brand"],
         address: station["fields"]["address"],
+        city: station["fields"]["city"],
+        cp: station["fields"]["cp"],
         gazole: station["fields"]["price_gazole"],
         sp98: station["fields"]["price_sp98"],
-        city: station["fields"]["city"]
+        e10: station["fields"]["price_e10"],
+        fuel: station["fields"]["fuel"],
+        shortage: station["fields"]["shortage"],
+        last_update: station["fields"]["update"],
+        dist: station["fields"]["dist"],
+        automate_24_24: station["fields"]["automate_24_24"],
+        api_station_id: station["fields"]["id"]
         # info_window: render_to_string(partial: "info_window", locals: { station: station }),
         # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
       }
