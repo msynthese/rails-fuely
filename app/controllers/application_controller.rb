@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name avatar fuel_preference])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[fuel_preference capacity])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update,
-                                    keys: %i[first_name last_name avatar fuel_preference])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[fuel_preference capacity])
   end
 
   private
@@ -17,6 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stations_path
   end
+
   # Overwriting the sign_ou redirect path method
   def after_sign_out_path_for(resource)
     root_path
