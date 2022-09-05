@@ -16,7 +16,6 @@ export default class extends Controller {
   initialize() {
     mapboxgl.accessToken = this.apiKeyValue
     navigator.geolocation.getCurrentPosition((pos) => this.#success(pos,this), this.#error, options)
-
   }
   connect() {
 
@@ -24,9 +23,8 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       center: [lon, lat],
-      zoom: 10
+      zoom: 12
     })
-    this.#stationApi(lat,lon)
     // this.#fitMapToMarkers()
     this.geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl })
@@ -38,7 +36,7 @@ export default class extends Controller {
       this.#stationApi(lat,lon)
     })
 
-    this.#addMarkersToMap(this.markersValue)
+    // this.#addMarkersToMap(this.markersValue)
     this.map.addControl(this.geocoder)
   }
   #stationApi(lat,lon) {
@@ -77,14 +75,22 @@ export default class extends Controller {
     });
   }
 
-  #success(pos, _this) {
+  #success(pos) {
     const crd = pos.coords;
 
     const center = new mapboxgl.LngLat(crd.longitude, crd.latitude);
-
+    lon = crd.longitude
+    lat = crd.latitude
+    console.log({lon})
+    console.log({lat})
     // Center the map
     // https://docs.mapbox.com/mapbox-gl-js/api/#map#setcenter
-    _this.map.setCenter(center);
+    this.map.setCenter(center);
+    new mapboxgl.Marker({"color":"#FF0000" })
+        .setLngLat([ lon,lat ])
+        //.setPopup(popup) // Add this
+        .addTo(this.map)
+    this.#stationApi(lat,lon)
   }
 
   #error(err) {
