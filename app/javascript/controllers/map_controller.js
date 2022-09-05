@@ -5,28 +5,28 @@ const options = {
     timeout: 5000,
     maximumAge: 0
   };
-
+let lat = 47.3667
+let lon = 8.5500
 export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array
   }
+
   initialize() {
     mapboxgl.accessToken = this.apiKeyValue
     navigator.geolocation.getCurrentPosition((pos) => this.#success(pos,this), this.#error, options)
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
-      center: [2.33333 , 48.866669],
-      zoom: 8
 
-    })
-    const lat = 2.33333
-    const lon = 48.866669
-    this.#callApi(lat,lon)
   }
   connect() {
 
+    this.map = new mapboxgl.Map({
+      container: this.element,
+      style: "mapbox://styles/mapbox/streets-v10",
+      center: [lon, lat],
+      zoom: 10
+    })
+    this.#stationApi(lat,lon)
     // this.#fitMapToMarkers()
     this.geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl })
@@ -35,15 +35,13 @@ export default class extends Controller {
       const coord = e.result.geometry.coordinates
       const lat = coord[1]
       const lon = coord[0]
-      this.#callApi(lat,lon)
-
+      this.#stationApi(lat,lon)
     })
 
     this.#addMarkersToMap(this.markersValue)
     this.map.addControl(this.geocoder)
   }
-
-  #callApi(lat, lon) {
+  #stationApi(lat,lon) {
     fetch(`/stations.json?lat=${lat}&lon=${lon}`,{ headers: {
         'Content-Type': 'application/json'
       }})
@@ -51,10 +49,8 @@ export default class extends Controller {
       .then(data => {
         this.#addMarkersToMap(data.markers)
         document.getElementById("station-list").innerHTML = data.list
-      } )
-
+       } )
   }
-
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))

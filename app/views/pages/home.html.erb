@@ -1,11 +1,11 @@
 <div class="home d-flex align-items-center justify-content-center flex-column">
   <div class="text-center">
-      <h1 class="fw-bold" style="font-size: 60px">Fuel price</h1>
-      <h2>find the cheapest petrol station near you</h2>
-      <% if user_signed_in? %>
-        <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to "Login or Register", new_user_session_path, class:"btn btn-primary"%>
-      <% end %>
+    <h1 class="fw-bold" style="font-size: 60px">MyFuely</h1>
+    <h2>compare <strong>Fuel</strong> prices and save <strong>money </strong>!</h2>
+    <% if user_signed_in? %>
+      <%# <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Login or Register", new_user_session_path, class:"btn btn-primary"%>
+    <% end %>
   </div>
 </div>
