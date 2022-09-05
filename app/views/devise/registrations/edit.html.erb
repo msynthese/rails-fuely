@@ -17,21 +17,10 @@
             <%= f.input :last_name,
                         required: false,
                         input_html: { autocomplete: "last_name" } %>
-            <%= f.input :password,
-                        hint: "leave it blank if you don't want to change it",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
             <div class="radio">
             <%= f.input :fuel_preference,as: :radio_buttons,
                         collection: User.fuel_preferences.keys.to_a%>
             </div >
-            <%= f.input :current_password,
-                        hint: "we need your current password to confirm your changes",
-                        required: true,
-                        input_html: { autocomplete: "current-password" } %>
           <div class="form-actions">
             <%= f.button :submit, "Update", class:"btn btn-primary"%>
           </div>
