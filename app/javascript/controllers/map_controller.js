@@ -11,16 +11,21 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
-
-  connect() {
+  initialize() {
     mapboxgl.accessToken = this.apiKeyValue
     navigator.geolocation.getCurrentPosition((pos) => this.#success(pos,this), this.#error, options)
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      center: [12.550343, 55.665957],
+      center: [2.33333 , 48.866669],
       zoom: 8
+
     })
+    const lat = center[1]
+    const lon = center[0]
+    this.#callApi(lat,lon)
+  }
+  connect() {
 
     // this.#fitMapToMarkers()
     this.geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
@@ -30,19 +35,24 @@ export default class extends Controller {
       const coord = e.result.geometry.coordinates
       const lat = coord[1]
       const lon = coord[0]
+      this.#callApi(lat,lon)
 
-      fetch(`/stations.json?lat=${lat}&lon=${lon}`,{ headers: {
+    })
+
+    this.#addMarkersToMap(this.markersValue)
+    this.map.addControl(this.geocoder)
+  }
+
+  #callApi(lat, lon) {
+    fetch(`/stations.json?lat=${lat}&lon=${lon}`,{ headers: {
         'Content-Type': 'application/json'
       }})
       .then(data => data.json())
       .then(data => {
         this.#addMarkersToMap(data.markers)
         document.getElementById("station-list").innerHTML = data.list
-       } )
-    })
+      } )
 
-    this.#addMarkersToMap(this.markersValue)
-    this.map.addControl(this.geocoder)
   }
 
   #fitMapToMarkers() {
