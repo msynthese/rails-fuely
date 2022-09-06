@@ -1,30 +1,52 @@
-<h6><%= station["fields"]["name"] %></h6>
-<p><%= station["fields"]["address"] %> <%= station["fields"]["city"] %></p>
-<div class="row d-flex justify-content-between">
-  <div class="col-6 text-start">
-    <p><%= station["fields"]["brand"] %></p>
+<div class="bbl-main">
+  <div class="bbl-top row d-flex justify-content-between bg-success p-2 mx-1 rounded-start">
+    <div class="bbl-img col-6 p-2">
+      <img src="assets/fuelpump.png" alt="fuel pump icon">
+    </div>
+    <div class="bbl-eco col-6 d-flex flex-column justify-content-around p-2">
+      <div class="bbl-eco-info d-flex flex-row">
+        <div class="bbl-eco-info-text col-9 text-end">
+          <p class="mb-0 mt-3">Per fill-up Saving</p>
+          <h3 class="mb-0">15.00 €</h3>
+          <p>vs average</p>
+        </div>
+        <div class="bbl-eco-info-icon col-3 d-flex justify-content-center align-items-center">
+          <img src="/assets/emoji_happy.png" alt="smiley" width="30" height="30">
+        </div>
+      </div>
+      <div class="bbl-eco-info-average">
+        <p>Gazole average: 1.70 € / L</p>
+      </div>
+    </div>
   </div>
-  <div class="col-6 text-end">
-    <p>Gazole: <%= station["fields"]["price_gazole"] %></p>
-  </div>
-  <div class="col-6 text-start">
-    <p>SP98: <%= station["fields"]["price_sp98"] %></p>
-  </div>
-  <div class="col-6 text-end">
-    <p>SP95: <%= station["fields"]["price_sp95"] %></p>
-  </div>
-  <div class="col-6 text-start">
-    <p>e10: <%= station["fields"]["price_e10"] %></p>
+  <div class="bbl-down p-2 mx-1 rounded-end bg-light">
+    <div class="bbl-station-info row d-flex justify-content-between">
+      <div class="col-6 text-start">
+        <p><%= station["fields"]["name"] %></p>
+      </div>
+      <div class="col-6 text-end">
+        <h5>Gazole: <%= station["fields"]["price_gazole"] %></h5>
+      </div>
+      <div class="col-6 text-start">
+        <p><%= "#{station["fields"]["address"]}, #{station["fields"]["city"]}" %></p>
+      </div>
+      <div class="col-6 text-end">
+        <p>Updated: <%= station["fields"]["update"] %></p>
+      </div>
+      <div class="col-6 text-start">
+        <p><%= station["fields"]["brand"] %></p>
+      </div>
+      <div class="col-6 text-end">
+        <p>Distance: <%= station["fields"]["dist"] %> Km</p>
+      </div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary bg-gradient w-100 mb-1">GO!</button>
+    </div>
+    <div>
+      <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
+    </div>
   </div>
 </div>
-<!--ADD CASE CONDITIONS FOR USER'S FUEL PREFERENCE-->
-<!--
-<p><%= station["fields"]["price_gazole"] %></p>
-<p><%= station["fields"]["price_sp98"] %></p>
-<p><%= station["fields"]["price_sp95"] %></p>
-<p><%= station["fields"]["price_e10"] %></p>
--->
-<!--LAST UPDATE VS NOW-->
-<p><%#= station["fields"]["update"] %></p>
-<!--LAST UPDATE VS SEARCH MARKER GEO(PLACE FROM WHERE SEARCH LAUNCHED)-->
-<p><%#= station["fields"]["dist"] %></p>
+</div>
+</div>
