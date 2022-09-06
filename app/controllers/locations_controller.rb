@@ -1,15 +1,21 @@
 class LocationsController < ApplicationController
   # before_action :set_location, only: %i[show edit update destroy]
+  def new
+    @location = Location.new
+  end
 
   def create
+    location = params[:location]
+    location = eval(location)
+    params[:location] = location
     @location = Location.new(location_params)
+    @location.user = current_user
+    @location.address = Geocoder.search([@location.latitude, @location.longitude]).first.address
     if @location.save
       flash[:notice] = "Location Created!"
-      redirect_to locations_path
+      redirect_to stations_path
     else
-      flash[:notice] = "Location Not Created..."
-      puts location.errors.messages
-      render :new, status: :unprocessable_entity
+      flash[:alert] = "Location Not Created..."
     end
   end
 
@@ -22,6 +28,7 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(:name, :adress, :latitude, :longitude)
   end
+
 
   # method useful for show edit update and destroy
   # def set_location
