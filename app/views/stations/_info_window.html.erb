@@ -1,2 +1,3 @@
 <h2><%= station["fields"]["name"] %></h2>
 <p><%= station["fields"]["brand"] %></p>
+<%= link_to "GO", "https://www.google.com/maps/dir/?api=1&destination=#{station["fields"]["geo_point"][0]},#{station["fields"]["geo_point"][1]}" , class:"btn btn-success",target: :_blank %>

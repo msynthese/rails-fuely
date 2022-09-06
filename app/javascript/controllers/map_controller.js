@@ -47,7 +47,7 @@ export default class extends Controller {
       .then(data => {
         this.#addMarkersToMap(data.markers)
         document.getElementById("station-list").innerHTML = data.list
-       } )
+      } )
   }
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
@@ -81,8 +81,6 @@ export default class extends Controller {
     const center = new mapboxgl.LngLat(crd.longitude, crd.latitude);
     lon = crd.longitude
     lat = crd.latitude
-    console.log({lon})
-    console.log({lat})
     // Center the map
     // https://docs.mapbox.com/mapbox-gl-js/api/#map#setcenter
     this.map.setCenter(center);
