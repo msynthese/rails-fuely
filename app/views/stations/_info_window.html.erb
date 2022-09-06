@@ -42,6 +42,7 @@
     </div>
     <div>
       <button type="button" class="btn btn-primary bg-gradient w-100 mb-1">GO!</button>
+      <%= link_to "GO", "https://www.google.com/maps/dir/?api=1&destination=#{station["fields"]["geo_point"][0]},#{station["fields"]["geo_point"][1]}" , class:"btn btn-success",target: :_blank %>
     </div>
     <div>
       <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
