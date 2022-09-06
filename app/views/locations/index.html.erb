@@ -2,7 +2,7 @@
   <div class="text-center">
     <h1>Favorite Locations</h1>
   </div>
-  <div class="container" style="height:255px; overflow-y: scroll">
+  <div class="container" style="height:calc(100vh - 125px); overflow-y: scroll">
     <% @locations.each do | location | %>
       <div class="flex-wrap: wrap; row location-box" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey" >
         <div class="location_address">
