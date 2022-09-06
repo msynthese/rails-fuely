@@ -1,9 +1,12 @@
+require "erb"
+
 class StationsController < ApplicationController
+  include ERB::Util
 
   def index
-    lat = params["lat"]
-    lon = params["lon"]
-    @stations = StationsService.find(lat, lon)
+    lat_origin = params["lat"]
+    lon_origin = params["lon"]
+    @stations = StationsService.find(lat_origin, lon_origin)
 
     @markers = []
     # The `geocoded` scope filters only flats with coordinates
@@ -28,7 +31,7 @@ class StationsController < ApplicationController
         services: station["fields"]["services"],
         automate_24_24: station["fields"]["automate_24_24"],
         api_station_id: station["fields"]["id"],
-        info_window: render_to_string(partial: "info_window", locals: { station: }, formats: [:html])
+        info_window: render_to_string(partial: "info_window", locals: { station:, lat_origin:, lon_origin: }, formats: [:html])
         # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
       }
 
@@ -46,4 +49,5 @@ class StationsController < ApplicationController
     end
 
   end
+
 end

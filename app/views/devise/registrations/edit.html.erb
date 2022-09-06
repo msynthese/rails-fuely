@@ -9,13 +9,33 @@
             <div class="radio">
               <%= f.input :fuel_preference, as: :radio_buttons,
                         collection: User.fuel_preferences.keys.to_a %>
-            </div >
+            </div>
+          </div >
+          <%# <%= simple_form_for @user do |f| %>
+            <%# <%= f.input :brand_preference, as: :dropdownMenuButton,
+              collection: User.brand_preferences.keys.to_a %>
+            <div class="dropdown">
+              <select class="btn btn-secondary dropdown-toggle">
+                <option selected>Select your Brand preference</option>
+                <option value="1">Esso Express</option>
+                <option value="2">Intermarché</option>
+                <option value="3">Système U</option>
+                <option value="4">Auchan</option>
+                <option value="5">Casino</option>
+                <option value="6">Total</option>
+                <option value="7">Shell</option>
+                <option value="8">Agip</option>
+                <option value="9">Avia</option>
+                <option value="10">Elan</option>
+                <option value="11">Bp</option>
+              </select>
+            </div>
             <%= f.input :capacity,
                         label: "Tank capacity/L",
                         required: false,
                         input_html: { autocomplete: "capacity", style: "width: 100px"} %>
             <div class="form-actions">
-              <%= f.button :submit, "Update", class:"btn btn-primary"%>
+              <%= f.button :submit, "Update", class:"btn btn-secondary"%>
             </div>
           <% end %>
           <div class="d-flex align-items-center">
@@ -26,3 +46,4 @@
       </div>
     </div>
   </div>
+</div>
