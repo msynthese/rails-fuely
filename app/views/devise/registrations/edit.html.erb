@@ -17,8 +17,8 @@
               <%= f.input :brand_preference, as: :select, collection: User.brand_preferences.keys, prompt:"Select your preferred brand"%>
             </div>
             <%= f.input :capacity,
-                        label: "Tank capacity/L",
-                        required: false,
+                        label: "Tank capacity in litres",
+                        required: true,
                         input_html: { autocomplete: "capacity", style: "width: 100px"} %>
             <div class="form-actions">
               <%= f.button :submit, "Update",
