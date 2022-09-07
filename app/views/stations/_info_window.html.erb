@@ -1,7 +1,7 @@
 <div class="bbl-main">
   <div class="bbl-top row d-flex justify-content-between bg-success p-2 mx-1 rounded-start">
     <div class="bbl-img col-6 p-2">
-      <img src="assets/fuelpump.png" alt="fuel pump icon">
+      <img src="assets/fuelpump.png" alt="fuel pump icon width="60" height="60"">
     </div>
     <div class="bbl-eco col-6 d-flex flex-column justify-content-around p-2">
       <div class="bbl-eco-info d-flex flex-row">
@@ -28,16 +28,16 @@
         <h5 class="fw-bold"><%= marker[:user_preference][:fuel_name] %>: <%= marker[:user_preference][:fuel_price] %> € </h5>
       </div>
       <div class="col-6 text-start">
-        <p><%= marker[:address] %>, <%= marker[:city] %></p>
+        <p><%= marker[:address] %> </p>
       </div>
       <div class="col-6 text-end">
-        <p>Updated: today </p>
+        <p><%= marker[:city] %></p>
       </div>
       <div class="col-6 text-start">
         <p><%= marker[:brand] %></p>
       </div>
       <div class="col-6 text-end">
-        <p>🚙 Distance: <%= marker[:dist] %> Km</p>
+        <p>🚙 <%= marker[:dist] %> Km</p>
       </div>
     </div>
     <div>

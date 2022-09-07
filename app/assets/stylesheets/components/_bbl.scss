@@ -16,3 +16,13 @@
   object-fit: contain;
   // object-fit: fill;
 }
+
+.bbl-img{
+  height: 60px;
+  width: 60px;
+}
+
+.bbl-down{
+  height: 200px;
+  overflow-y: scroll;
+}
