@@ -25,6 +25,8 @@ class StationsController < ApplicationController
     # FILTER MARKERS ON FUEL TYPE
     # @stations = @stations.select do
     # end
+    puts "*******@STATIONS CHECK********"
+    puts @stations
 
     @markers = @stations.map do |station|
       # Basic DATA --------------------------------

@@ -5,7 +5,7 @@
       <p class="text-light">average: <%= marker[:user_preference][:preferred_fuel_average] %> € / L <%#= @average_preferred_fuel_price %></p>
     </div>
     <div class="bbl-img col-4 p-2">
-      <img src="assets/fuelpump.png" alt="fuel pump icon width="60" height="60"">
+      <%= image_tag "fuelpump.png", style: "width: 60px; height: 60px;" %>
     </div>
     <div class="bbl-eco d-flex flex-column justify-content-around p-2">
       <div class="bbl-eco-info d-flex flex-row">
@@ -14,11 +14,11 @@
           <h3 class="text-white mb-0"> <%= marker[:calcul][:per_fillup] %> € </h3>
           <p class="text-light mb-0">vs average</p>
         </div>
-        <div class="bbl-eco-info-icon col-4 d-flex justify-content-center align-items-center">
+        <div class="col-4 d-flex justify-content-center align-items-center">
           <% if  marker[:calcul][:per_fillup].positive? %>
-            <img src="/assets/emoji_happy.png" alt="smiley" width="30" height="30">
+            <%= image_tag "emoji_happy.png", style: "width: 30px; height: 30px;" %>
           <% else %>
-            <img src="/assets/emoji_unhappy.png" alt="smiley" width="30" height="30">
+            <%= image_tag "emoji_unhappy.png", style: "width: 30px; height: 30px;" %>
           <% end %>
         </div>
       </div>
