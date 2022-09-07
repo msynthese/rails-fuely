@@ -1,19 +1,21 @@
 <div class="container">
-  <header class="text-center">
+  <div class="text-center">
     <h1>Favorite Locations</h1>
-  </header>
-  <% @locations.each do | location | %>
-    <div class="flex-wrap: wrap; row location-box" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey" >
-      <div class="location_address">
-        <%= location.address %>
-        <div class="star-img text-center">
-          <button class="btn rounded-4"
-          <%= link_to location.name, "#location_path(location)" %>  <%= image_tag "star-images.png"%> </button>
+  </div>
+  <div class="container" style="height:calc(100vh - 170px); overflow-y: scroll">
+    <% @locations.each do | location | %>
+      <div class="flex-wrap: wrap; row location-box" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey" >
+        <div class="location_address">
+          <%= location.address %>
+          <div class="star-img text-center">
+            <button class="btn rounded-4">
+            <%= location.name%>  <%= image_tag "star-images.png"%></button>
+            </div>
           </div>
         </div>
+      <% end %>
+      <div class="text-center p-2">
+        <%= link_to "New Search", stations_path, class: "btn btn-primary rounded-4" %>
       </div>
-    <% end %>
-    <div class="text-center p-2">
-      <%= link_to "New Search", locations_path, class: "btn btn-primary rounded-4" %>
-    </div>
   </div>
+</div>
