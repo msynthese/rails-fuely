@@ -15,37 +15,39 @@
         </div>
       </div>
       <div class="bbl-eco-info-average">
-        <p>Gazole average: 1.70 € / L</p>
+        <p>Gazole average: 1.70 € / L TEST: <%#= @average_preferred_fuel_price %></p>
       </div>
     </div>
   </div>
   <div class="bbl-down p-2 mx-1 rounded-end bg-light">
     <div class="bbl-station-info row d-flex justify-content-between">
       <div class="col-6 text-start">
-        <p><%= station["fields"]["name"] %></p>
+        <p class="fw-bold"><%= marker[:name] %></p>
       </div>
       <div class="col-6 text-end">
-        <h5>Gazole: <%= station["fields"]["price_gazole"] %></h5>
+        <h5 class="fw-bold"><%= marker[:user_preference][:fuel_name] %>: <%= marker[:user_preference][:fuel_price] %> € </h5>
       </div>
       <div class="col-6 text-start">
-        <p><%= "#{station["fields"]["address"]}, #{station["fields"]["city"]}" %></p>
+        <p><%= marker[:address] %>, <%= marker[:city] %></p>
       </div>
       <div class="col-6 text-end">
-        <p>Updated: <%= station["fields"]["update"] %></p>
+        <p>Updated: today </p>
       </div>
       <div class="col-6 text-start">
-        <p><%= station["fields"]["brand"] %></p>
+        <p><%= marker[:brand] %></p>
       </div>
       <div class="col-6 text-end">
-        <p>Distance: <%= station["fields"]["dist"] %> Km</p>
+        <p>🚙 Distance: <%= marker[:dist] %> Km</p>
       </div>
     </div>
     <div>
-      <button type="button" class="btn btn-primary bg-gradient w-100 mb-1">GO!</button>
-      <%= link_to "GO", "https://www.google.com/maps/dir/?api=1&destination=#{station["fields"]["geo_point"][0]},#{station["fields"]["geo_point"][1]}" , class:"btn btn-success",target: :_blank %>
+      <%= link_to "GO!", "https://www.google.com/maps/dir/?api=1&destination=#{marker[:lat]},#{marker[:lng]}" , class:"btn btn-primary bg-gradient w-100 mb-1",target: :_blank %>
     </div>
     <div>
       <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
+    </div>
+    <div class="col-6 text-start">
+      <p><%#= marker %></p>
     </div>
   </div>
 </div>

@@ -4,15 +4,15 @@
     <div class="card-product-infos">
       <p class="fs-6 fst-normal lh-1"><strong><%= m[:name] %></strong></p>
       <p class="fs-6 fst-normal lh-1"><strong><%= "#{m[:address]}, #{m[:city]}" %></strong></p>
-      <% if m[:gazole] < 0.01%>
-        <p class="fs-6 fst-normal lh-1"><strong> Gazole: <em><%= m[:gazole]*1000 %> €</em></strong></p>
+      <% if m[:fuels][:Gazole] < 0.01%>
+        <p class="fs-6 fst-normal lh-1"><strong> Gazole: <em><%= m[:fuels][:Gazole]*1000 %> €</em></strong></p>
       <% else %>
-        <p class="fs-6 fst-normal lh-1"><strong> Gazole: <em><%= m[:gazole] %> €</em></strong></p>
+        <p class="fs-6 fst-normal lh-1"><strong> Gazole: <em><%= m[:fuels][:Gazole] %> €</em></strong></p>
       <%end%>
-      <% if m[:sp98] != nil && m[:sp98] < 0.01%>
-        <p class="fs-6 fst-normal lh-1"><strong> SP98: <em><%= m[:sp98]*1000 %> €</em></strong></p>
+      <% if m[:fuels][:SP98] != nil && m[:fuels][:SP98] < 0.01%>
+        <p class="fs-6 fst-normal lh-1"><strong> SP98: <em><%= m[:fuels][:SP98]*1000 %> €</em></strong></p>
       <% else%>
-        <p class="fs-6 fst-normal lh-1"><strong> SP98: <em><%= m[:sp98] %> €</em></strong></p>
+        <p class="fs-6 fst-normal lh-1"><strong> SP98: <em><%= m[:fuels][:SP98] %> €</em></strong></p>
       <%end%>
     </div>
   </div>

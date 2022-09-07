@@ -2,3 +2,17 @@
   width: 20px;
   height: 20px;
 }
+
+// not used:
+.bbl-fill {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/assets/fuelpump.png');
+}
+
+// not used:
+.bbl-img-fit{
+  object-fit: contain;
+  // object-fit: fill;
+}
