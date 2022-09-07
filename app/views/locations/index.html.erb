@@ -4,12 +4,12 @@
   </div>
   <div class="container" style="height:calc(100vh - 190px); overflow-y: scroll">
     <% @locations.each do | location | %>
-      <div class="flex-wrap: wrap; row location-box" style="background-color:#DCDCDC; box-shadow: 2px 2px 2px grey" >
+      <div class="btn row location-box text-center" style="flex-wrap: wrap; background-color:#DCDCDC; box-shadow: 2px 2px 2px grey" >
         <div class="location_address">
           <%= location.address %>
           <div class="star-img text-center">
-            <button class="btn rounded-4">
-              <%= location.name%>  <%= image_tag "star-images.png"%></button>
+            <div class="rounded-4"></div>
+            <%= location.name%>  <%= image_tag "star-images.png"%>
           </div>
         </div>
       </div>
