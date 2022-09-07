@@ -6,3 +6,12 @@
 #map {
   flex-grow: 1;
 }
+.favorite{
+  border: none;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background-image:image-url('star-images.png');
+  background-size: contain;
+}
