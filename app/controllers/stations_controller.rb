@@ -2,14 +2,30 @@ require "erb"
 
 class StationsController < ApplicationController
   include ERB::Util
-  @var_test = "*****TEST DISPLAY VAR****"
+
   def index
     lat_origin = params["lat"]
     lon_origin = params["lon"]
     @stations = StationsService.find(lat_origin, lon_origin)
 
     @preferred_fuel_prices = []
-    # The `geocoded` scope filters only flats with coordinates
+    # average = @stations.select { |s| s["fields"][current_user.fuel_preference] }.sum / @stations.count
+
+    prices = @stations.map do |s|
+      # puts s.inspect
+      if s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f < 0.01
+        s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f * 1000
+      else
+        s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f
+      end
+    end
+
+    average = (prices.sum / @stations.count).round(3) if @stations.any?
+
+    # FILTER MARKERS ON FUEL TYPE
+    # @stations = @stations.select do
+    # end
+
     @markers = @stations.map do |station|
       # Basic DATA --------------------------------
       basic_station_data = {
@@ -70,34 +86,34 @@ class StationsController < ApplicationController
           end
       }
 
-      # fuels = {
-      #   SP98: station["fields"]["price_sp98"].to_f,
-      #   SP95: station["fields"]["price_sp95"].to_f,
-      #   E10: station["fields"]["price_e10"].to_f,
-      #   E85: station["fields"]["price_e85"].to_f,
-      #   GPLc: station["fields"]["price_gplc"].to_f,
-      #   Gazole: station["fields"]["price_gazole"].to_f
-      # }
-
       # User preference DATA --------------------------------
       user_preference = {
         fuel_name: current_user.fuel_preference,
         fuel_price: fuels[current_user.fuel_preference.to_sym],
-        capacity: current_user.capacity
+        capacity: current_user.capacity,
+        preferred_fuel_average: average
       }
+
+      # Calcuation DATA
+      fillup_calc = (current_user.capacity * (average - user_preference[:fuel_price])).round(3)
+      calcul = {
+        per_fillup: fillup_calc,
+        per_fillup_text:
+          if fillup_calc.positive?
+            "Saving"
+          else
+            "Loss"
+          end,
+      }
+
       user_preference[:error_message] = if current_user.fuel_preference.nil?
                                           'set you preferred fuel in your settings'
                                         elsif user_preference[:fuel_price].nil?
                                           "shortage"
                                         end
 
-      # if user_preference[:fuel_price]
-      #   average_preferred_fuel(user_preference[:fuel_price].to_f.round(2))
-      # end
-
-
       # Marker constructor --------------------------------
-      marker = basic_station_data.merge(fuels:, user_preference:)
+      marker = basic_station_data.merge(fuels:, user_preference:, calcul:)
       marker[:info_window] = render_to_string(partial: "info_window", locals: { marker:, lat_origin:, lon_origin: }, formats: [:html])
 
       marker
