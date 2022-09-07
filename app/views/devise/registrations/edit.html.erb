@@ -8,25 +8,26 @@
           <div class="form-inputs">
             <div class="radio">
               <%= f.input :fuel_preference, as: :radio_buttons,
-                        collection: User.fuel_preferences.keys.to_a %>
+                        collection: User.fuel_preferences.keys.to_a,
+                        checked: User.fuel_preferences.keys.to_a.first,
+                        required: true%>
             </div>
           </div >
-          <div class="dropdown">
-            <select class="btn btn-secondary dropdown-toggle">
-              <option selected>Select your Brand preference</option>
-              <option value="1">Esso Express</option>
-              <option value="2">Intermarché</option>
-              <option value="3">Système U</option>
-              <option value="4">Auchan</option>
-              <option value="5">Casino</option>
-              <option value="6">Total</option>
-              <option value="7">Shell</option>
-              <option value="8">Agip</option>
-              <option value="9">Avia</option>
-              <option value="10">Elan</option>
-              <option value="11">Bp</option>
-            </select>
-          </div>
+            <div class="dropdown">
+              <%= f.input :brand_preference, as: :select, collection: User.brand_preferences.keys, prompt:"Select your preferred brand"%>
+            </div>
+            <%= f.input :capacity,
+                        label: "Tank capacity/L",
+                        required: false,
+                        input_html: { autocomplete: "capacity", style: "width: 100px"} %>
+            <div class="form-actions">
+              <%= f.button :submit, "Update",
+                        class:"btn btn-secondary"%>
+            </div>
+          <% end %>
+          <div class="d-flex align-items-center">
+            <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+
           <%= f.input :capacity,
                         label: "Tank capacity/L",
                         required: false,

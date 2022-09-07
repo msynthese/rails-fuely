@@ -10,13 +10,21 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to locations_path, class: "navbar-brand" do%>
-              <%= image_tag "star-images.png" %>
+            <% if current_user.fuel_preference.present?%>
+              <%= link_to locations_path, class: "navbar-brand" do%>
+                <%= image_tag "star-images.png" %>
+              <%end%>
+            <% else%>
+              <a class="navbar-brand " data-toggle="tooltip" data-placement="top" title="update fuel preference to see favorites"><%= image_tag "star-images.png" %></a>
             <%end%>
           </li>
           <li class="nav-item active">
-            <%= link_to stations_path, class: "navbar-brand" do%>
-              <%= image_tag "mark-map.png" %>
+            <% if current_user.fuel_preference.present?%>
+              <%= link_to stations_path, class:"navbar-brand" do%>
+                <%= image_tag "mark-map.png" %>
+              <%end%>
+            <% else%>
+              <a class="navbar-brand" data-toggle="tooltip" data-placement="top" title="update fuel preference to see map"><%= image_tag "mark-map.png" %></a>
             <%end%>
           </li>
           <li class="nav-item active">
