@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_081837) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_122142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_081837) do
     t.string "avatar"
     t.integer "fuel_preference"
     t.bigint "brand_id"
-    t.integer "capacity"
+    t.integer "capacity", default: 0
     t.integer "brand_preference"
     t.index ["brand_id"], name: "index_users_on_brand_id"
     t.index ["email"], name: "index_users_on_email", unique: true
