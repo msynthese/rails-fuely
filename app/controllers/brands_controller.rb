@@ -24,7 +24,7 @@ class BrandsController < ApplicationController
   end
 
   # method useful for show edit update and destroy
-  # def set_brand
-  #   @brand = Brand.find(params[:id])
-  # end
+  def set_brand
+    @brand = Brand.find(params[:id])
+  end
 end
