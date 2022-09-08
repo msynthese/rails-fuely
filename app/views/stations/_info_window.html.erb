@@ -1,5 +1,5 @@
 <div class="bbl-main">
-  <div class="bbl-top row d-flex justify-content-between <%= marker[:calcul][:per_fillup].positive? ? "bg-success" : "bg-warning" %> mx-1 rounded-start">
+  <div class="bbl-top row d-flex justify-content-between <%= marker[:calcul][:per_fillup] >= 0 ? "bg-success" : "bg-warning" %> mx-1 rounded-start">
     <div class="bbl-price text-start col-8 d-flex flex-column justify-content-center align-items-start ps-3 pt-3">
       <h5 class="fw-bold"><%= marker[:user_preference][:fuel_name] %>: <%= marker[:user_preference][:fuel_price] %> € </h5>
       <p class="text-light">average: <%= marker[:user_preference][:preferred_fuel_average] %> € / L</p>
