@@ -8,10 +8,11 @@ class StationsController < ApplicationController
     lon_origin = params["lon"]
     @stations = StationsService.find(lat_origin, lon_origin)
 
-    @preferred_fuel_prices = []
+    # AVERAGE PREFERRED FUEL PRICE
+    # @preferred_fuel_prices = []
     # average = @stations.select { |s| s["fields"][current_user.fuel_preference] }.sum / @stations.count
 
-    prices = @stations.map do |s|
+    preferred_fuel_prices = @stations.map do |s|
       # puts s.inspect
       if s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f < 0.01
         s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f * 1000
@@ -20,11 +21,17 @@ class StationsController < ApplicationController
       end
     end
 
-    average = (prices.sum / @stations.count).round(3) if @stations.any?
+    average = (preferred_fuel_prices.sum / @stations.count).round(3) if @stations.any?
+    best_price = preferred_fuel_prices.min
 
     # FILTER MARKERS ON FUEL TYPE
-    # @stations = @stations.select do
-    # end
+    @stations = @stations.select do |station|
+        station["fields"]["price_#{current_user.fuel_preference.downcase}"].nil? == false
+        # && station["fields"]["price_#{current_user.brand_preference}"].any? == station["fields"]["brand"]
+    end
+
+
+
     puts "*******@STATIONS CHECK********"
     puts @stations
 
@@ -93,7 +100,8 @@ class StationsController < ApplicationController
         fuel_name: current_user.fuel_preference,
         fuel_price: fuels[current_user.fuel_preference.to_sym],
         capacity: current_user.capacity,
-        preferred_fuel_average: average
+        preferred_fuel_average: average,
+        preferred_fuel_best_price: best_price
       }
 
       # Calcuation DATA
@@ -109,7 +117,7 @@ class StationsController < ApplicationController
       }
 
       user_preference[:error_message] = if current_user.fuel_preference.nil?
-                                          'set you preferred fuel in your settings'
+                                          'set your fuel'
                                         elsif user_preference[:fuel_price].nil?
                                           "shortage"
                                         end

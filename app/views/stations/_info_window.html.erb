@@ -15,7 +15,9 @@
           <p class="text-light mb-0">vs average</p>
         </div>
         <div class="col-4 d-flex justify-content-center align-items-center">
-          <% if  marker[:calcul][:per_fillup].positive? %>
+          <% if marker[:user_preference][:preferred_fuel_best_price] == marker[:user_preference][:fuel_price] %>
+            <%= image_tag "emoji_happystars.png", style: "width: 30px; height: 30px;" %>
+          <% elsif marker[:calcul][:per_fillup].positive? %>
             <%= image_tag "emoji_happy.png", style: "width: 30px; height: 30px;" %>
           <% else %>
             <%= image_tag "emoji_unhappy.png", style: "width: 30px; height: 30px;" %>
@@ -29,30 +31,77 @@
       <div class="col-12 text-start">
         <p class="fw-bold"><%= marker[:name] %></p>
       </div>
-      <!--TEST ARRAY FOR AVERAGE PRICE IN BUBBLE-->
+      <!--TESTs-->
+      <div class="col-6 text-start">
+        <p>Best price<%= marker[:user_preference][:preferred_fuel_best_price].to_s %> </p>
+      </div>
+      <div class="col-6 text-end">
+        <p>Pref fuel price<%= marker[:user_preference][:fuel_price].to_s %></p>
+      </div>
+      <!--TESTs END-->
       <div class="col-6 text-start">
         <p><%= marker[:address] %> </p>
       </div>
       <div class="col-6 text-end">
         <p><%= marker[:city] %></p>
       </div>
-      <div class="col-6 text-start">
-        <p><%= marker[:brand] %></p>
-      </div>
-      <div class="col-6 text-end">
-        <p>🚙 <%= marker[:dist] %> Km</p>
-      </div>
+      <div class="col-6 text-start pb-2">
+        <p><%#= marker[:brand] %></p>
+        <% case marker[:brand]
+        when "Agip" %>
+        <%= image_tag "brand_agip.png", style: "width: 70px; height: 70px;" %>
+        <% when "Auchan" %>
+        <%= image_tag "brand_auchan.png", style: "width: 70px; height: 70px;" %>
+        <% when "Avia" %>
+        <%= image_tag "brand_avia.png", style: "width: 70px; height: 70px;" %>
+        <% when "BP" %>
+        <%= image_tag "brand_bp.png", style: "width: 70px; height: 70px;" %>
+        <% when "Casino" %>
+        <%= image_tag "brand_casino.png", style: "width: 70px; height: 70px;" %>
+        <% when "Elan" %>
+        <%= image_tag "brand_elan.png", style: "width: 70px; height: 70px;" %>
+        <% when "Esso Express" %>
+        <%= image_tag "brand_esso_express.png", style: "width: 70px; height: 70px;" %>
+        <% when "Esso" %>
+        <%= image_tag "brand_esso.png", style: "width: 70px; height: 70px;" %>
+        <% when "Intermarché" %>
+        <%= image_tag "brand_intermarche.png", style: "width: 70px; height: 70px;" %>
+        <% when "Intermarché Contact" %>
+        <%= image_tag "brand_intermarche_contact.png", style: "width: 70px; height: 70px;" %>
+        <% when "Shell" %>
+        <%= image_tag "brand_shell.png", style: "width: 70px; height: 70px;" %>
+        <% when "SystèmeU" %>
+        <%= image_tag "brand_U.png", style: "width: 70px; height: 70px;" %>
+        <% when "Total" %>
+        <%= image_tag "brand_total.png", style: "width: 70px; height: 70px;" %>
+        <% when "Géant" %>
+        <%= image_tag "brand_geant.png", style: "width: 70px; height: 70px;" %>
+        <% when "Carrefour Express" %>
+        <%= image_tag "brand_carrefour_express.png", style: "width: 70px; height: 70px;" %>
+        <% when "Carrefour" %>
+        <%= image_tag "brand_carrefour.png", style: "width: 70px; height: 70px;" %>
+        <% when "Carrefour Market" %>
+        <%= image_tag "brand_carrefour_market.png", style: "width: 70px; height: 70px;" %>
+        <% when "Leclerc" %>
+        <%= image_tag "brand_leclerc.png", style: "width: 70px; height: 70px;" %>
+        <% when "Indépendant sans enseigne" %>
+        <%= image_tag "brand_indep.png", style: "width: 70px; height: 70px;" %>
+      <% end %>
     </div>
-    <div>
-      <%= link_to "GO!", "https://www.google.com/maps/dir/?api=1&destination=#{marker[:lat]},#{marker[:lng]}" , class:"btn btn-primary bg-gradient w-100 mb-1",target: :_blank %>
-    </div>
-    <div>
-      <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
-    </div>
-    <div class="col-6 text-start">
-      <p><%#= marker %></p>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <p>🚙 <%= marker[:dist] %> Km</p>
     </div>
   </div>
+  <div>
+    <%= link_to "GO!", "https://www.google.com/maps/dir/?api=1&destination=#{marker[:lat]},#{marker[:lng]}" , class:"btn btn-primary bg-gradient w-100 mb-1",target: :_blank %>
+  </div>
+  <div>
+    <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
+  </div>
+  <div class="col-6 text-start">
+    <p><%#= marker %></p>
+  </div>
+</div>
 </div>
 </div>
 </div>

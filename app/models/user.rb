@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   enum fuel_preference: %i[SP95 SP98 E10 E85 Gazole GPLc Brand]
-  enum brand_preference: %i[All Agip Auchan Avia Bp Casino Elan Esso_Express Intermarché Shell Système_U Total]
+  enum brand_preference: ["All" "Agip" "Auchan" "Avia" "BP" "Casino" "Elan" "Esso Express" "Esso" "Intermarché" "Intermarché Contact" "Shell" "SystèmeU" "Total" "Géant" "Carrefour Express" "Carrefour" "Carrefour Market" "Leclerc" "Indépendant sans enseigne"]
   has_many :locations, dependent: :destroy
   belongs_to :brand, optional: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
