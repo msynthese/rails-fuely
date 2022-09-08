@@ -62,21 +62,37 @@ export default class extends Controller {
 
   #addMarkersToMap(markers) {
     markers.forEach((marker) => {
-     const popup = new mapboxgl.Popup().setHTML(marker.info_window) // Add this
+      console.log("marker")
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window) // Add this
 
           // Create a HTML element for your custom marker
       // const customMarker = document.createElement("div")
       // customMarker.className = "marker"
-      // customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      // customMarker.style.backgroundColor =
       // customMarker.style.backgroundSize = "contain"
       // customMarker.style.width = "25px"
       // customMarker.style.height = "25px"
 
        // Pass the element as an argument to the new marker
-      new mapboxgl.Marker()
+      if (marker.user_preference.fuel_price > marker.user_preference.preferred_fuel_average){
+        console.log(marker.user_preference)
+        new mapboxgl.Marker({color: "#F96849"})
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup) // Add this
         .addTo(this.map)
+      } else {
+        if (marker.user_preference.fuel_price == marker.user_preference.preferred_fuel_best_price){
+          new mapboxgl.Marker({color: "#1BFC04"})
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup) // Add this
+          .addTo(this.map)
+        } else {
+          new mapboxgl.Marker({color: "#04FCDB"})
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup) // Add this
+          .addTo(this.map)
+        };
+      };
     });
   }
 
@@ -89,9 +105,7 @@ export default class extends Controller {
     // https://docs.mapbox.com/mapbox-gl-js/api/#map#setcenter
     this.map.setCenter(center);
     const location = {latitude,longitude}
-    console.log(location)
     var jsonLocation = JSON.stringify(location)
-    console.log(jsonLocation)
     new mapboxgl.Marker({"color":"#FF0000" })
         .setLngLat([ longitude,latitude ])
         //.setPopup(popup) // Add this
