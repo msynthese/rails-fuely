@@ -7,10 +7,16 @@
           <%= f.error_notification %>
           <div class="form-inputs">
             <div class="radio">
-              <%= f.input :fuel_preference, as: :radio_buttons,
-                        collection: User.fuel_preferences.keys.to_a,
-                        checked: User.fuel_preferences.keys.to_a.first,
-                        required: true%>
+              <% if resource.fuel_preference.present?%>
+                <%= f.input :fuel_preference, as: :radio_buttons,
+                          collection: User.fuel_preferences.keys.to_a,
+                          required: true%>
+              <% else %>
+                <%= f.input :fuel_preference, as: :radio_buttons,
+                          collection: User.fuel_preferences.keys.to_a,
+                          checked: User.fuel_preferences.keys.to_a.first,
+                          required: true%>
+              <% end %>
             </div>
           </div >
           <div class="dropdown">
