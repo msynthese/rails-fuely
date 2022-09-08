@@ -8,9 +8,17 @@ class StationsController < ApplicationController
     lon_origin = params["lon"]
     @stations = StationsService.find(lat_origin, lon_origin)
 
+    # FILTER MARKERS ON FUEL TYPE
+    @stations = @stations.select do |station|
+      (current_user.brand_preference == station["fields"]["brand"] || current_user.brand_preference == "All") && station["fields"]["price_#{current_user.fuel_preference.downcase}"].present?
+    end
+
+    puts "*******@STATIONS CHECK AFTER FILTER ON FUEL TYPE********"
+    puts @stations
+
     # AVERAGE PREFERRED FUEL PRICE
-    # @preferred_fuel_prices = []
-    # average = @stations.select { |s| s["fields"][current_user.fuel_preference] }.sum / @stations.count
+    puts "********CHECK @stations before MAP preferred_fuel_prices***********"
+    puts @stations
 
     preferred_fuel_prices = @stations.map do |s|
       # puts s.inspect
@@ -24,16 +32,8 @@ class StationsController < ApplicationController
     average = (preferred_fuel_prices.sum / @stations.count).round(3) if @stations.any?
     best_price = preferred_fuel_prices.min
 
-    # FILTER MARKERS ON FUEL TYPE
-    @stations = @stations.select do |station|
-        station["fields"]["price_#{current_user.fuel_preference.downcase}"].nil? == false
-        # && station["fields"]["price_#{current_user.brand_preference}"].any? == station["fields"]["brand"]
-    end
-
-
-
-    puts "*******@STATIONS CHECK********"
-    puts @stations
+    puts "****CHECK ARRAY preferred_fuel_prices******"
+    puts preferred_fuel_prices
 
     @markers = @stations.map do |station|
       # Basic DATA --------------------------------
