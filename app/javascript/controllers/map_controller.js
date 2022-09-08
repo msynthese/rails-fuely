@@ -5,8 +5,8 @@ const options = {
     timeout: 5000,
     maximumAge: 0
   };
-let latitude = 47.3667
-let longitude = 8.5500
+let latitude = 46.53226792003686
+let longitude = 6.592254569225835
 export default class extends Controller {
   static values = {
     apiKey: String,
