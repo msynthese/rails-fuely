@@ -22,14 +22,15 @@ puts "Destroying Users..."
 User.destroy_all
 puts "Creating users..."
 
-user_1 = {first_name: "Jean", last_name: "User", email: "user_1@example.com", password: "123456", fuel_preference: "SP95", brand: Brand.first}
-user_2 = {first_name: "Lisa", last_name: "User", email: "user_2@example.com",  password: "123456", fuel_preference: "SP95", brand: Brand.first}
-user_3 = {first_name: "Louis", last_name: "User", email: "user_3@example.com", password: "123456", fuel_preference: "SP98", brand: Brand.second}
-user_4 = {first_name: "Lara", last_name: "User", email: "user_4@example.com", password: "123456", fuel_preference: "Gazole", brand: Brand.second}
-user_5 = {first_name: "Liam", last_name: "User", email: "user_5@example.com", password: "123456", fuel_preference: "Gazole", brand: Brand.third}
-user_6 = {first_name: "Gary", last_name: "User", email: "user_6@example.com", password: "123456", fuel_preference: "E10", brand: Brand.fourth}
+user_1 = {first_name: "Joao", last_name: "Henriques", email: "joao@mail.com", password: "123456", fuel_preference: "Gazole", brand: Brand.first, capacity: 40, brand_preference: "Agip"}
+user_2 = {first_name: "Jean", last_name: "User", email: "user_1@example.com", password: "123456", fuel_preference: "SP95", brand: Brand.first, capacity: 40}
+user_3 = {first_name: "Lisa", last_name: "User", email: "user_2@example.com",  password: "123456", fuel_preference: "SP95", brand: Brand.first, capacity: 40}
+user_4 = {first_name: "Louis", last_name: "User", email: "user_3@example.com", password: "123456", fuel_preference: "SP98", brand: Brand.second, capacity: 40}
+user_5 = {first_name: "Lara", last_name: "User", email: "user_4@example.com", password: "123456", fuel_preference: "Gazole", brand: Brand.second, capacity: 40}
+user_6 = {first_name: "Liam", last_name: "User", email: "user_5@example.com", password: "123456", fuel_preference: "Gazole", brand: Brand.third, capacity: 40}
+user_7 = {first_name: "Gary", last_name: "User", email: "user_6@example.com", password: "123456", fuel_preference: "E10", brand: Brand.fourth, capacity: 40}
 
-[user_1, user_2, user_3, user_4, user_5, user_6].each do |attributes|
+[user_1, user_2, user_3, user_4, user_5, user_6, user_7].each do |attributes|
   user = User.create!(attributes)
   puts "Created #{user.first_name}"
 end
