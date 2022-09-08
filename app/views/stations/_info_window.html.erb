@@ -1,8 +1,8 @@
 <div class="bbl-main">
-  <div class="bbl-top row d-flex justify-content-between <%= marker[:calcul][:per_fillup].positive? ? "bg-success" : "bg-warning" %> mx-1 rounded-start">
+  <div class="bbl-top row d-flex justify-content-between <%= marker[:calcul][:per_fillup] >= 0 ? "bg-success" : "bg-warning" %> mx-1 rounded-start">
     <div class="bbl-price text-start col-8 d-flex flex-column justify-content-center align-items-start ps-3 pt-3">
       <h5 class="fw-bold"><%= marker[:user_preference][:fuel_name] %>: <%= marker[:user_preference][:fuel_price] %> € </h5>
-      <p class="text-light">average: <%= marker[:user_preference][:preferred_fuel_average] %> € / L <%#= @average_preferred_fuel_price %></p>
+      <p class="text-light">average: <%= marker[:user_preference][:preferred_fuel_average] %> € / L</p>
     </div>
     <div class="bbl-img col-4 p-2">
       <%= image_tag "fuelpump.png", style: "width: 60px; height: 60px;" %>
@@ -31,14 +31,14 @@
       <div class="col-12 text-start">
         <p class="fw-bold"><%= marker[:name] %></p>
       </div>
-      <!--TESTs-->
+      <!--TESTs CHECKS
       <div class="col-6 text-start">
         <p>Best price<%= marker[:user_preference][:preferred_fuel_best_price].to_s %> </p>
       </div>
       <div class="col-6 text-end">
         <p>Pref fuel price<%= marker[:user_preference][:fuel_price].to_s %></p>
       </div>
-      <!--TESTs END-->
+      TESTs CHECKS END-->
       <div class="col-6 text-start">
         <p><%= marker[:address] %> </p>
       </div>
@@ -95,12 +95,11 @@
   <div>
     <%= link_to "GO!", "https://www.google.com/maps/dir/?api=1&destination=#{marker[:lat]},#{marker[:lng]}" , class:"btn btn-primary bg-gradient w-100 mb-1",target: :_blank %>
   </div>
+  <!--
   <div>
     <button type="button" class="btn btn-secondary bg-gradient w-100">See All Prices</button>
   </div>
-  <div class="col-6 text-start">
-    <p><%#= marker %></p>
-  </div>
+  -->
 </div>
 </div>
 </div>
