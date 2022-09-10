@@ -20,7 +20,14 @@
             </div>
           </div >
           <div class="dropdown">
-            <%= f.input :brand_preference, as: :select, collection: User.brand_preferences.keys, prompt:"Select your preferred brand"%>
+            <% if resource.brand_preference.present?%>
+              <%= f.input :brand_preference, as: :select,
+                                      collection: User.brand_preferences.keys%>
+            <% else %>
+              <%= f.input :brand_preference, as: :select,
+                                      collection: User.brand_preferences.keys,
+                                      selected:User.brand_preferences.keys.first%>
+            <% end %>
           </div>
           <%= f.input :capacity,
                         label: "Tank capacity in litres",
