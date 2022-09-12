@@ -25,14 +25,14 @@ class StationsController < ApplicationController
     preferred_fuel_prices = @stations.map do |s|
       # puts s.inspect
       if s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f < 0.01
-        s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f * 1000
+        s["fields"]["price_#{current_user.fuel_preference.downcase}"] = (s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f * 1000).round(3)
       else
         s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f.round(3)
       end
     end
 
     average = (preferred_fuel_prices.sum / @stations.count).round(3) if @stations.any?
-    best_price = preferred_fuel_prices.minadd
+    best_price = preferred_fuel_prices.min
 
     puts "****CHECK ARRAY preferred_fuel_prices******"
     puts preferred_fuel_prices
