@@ -10,27 +10,29 @@ class StationsController < ApplicationController
 
     # FILTER MARKERS ON FUEL TYPE
     @stations = @stations.select do |station|
-      (current_user.brand_preference == station["fields"]["brand"] || current_user.brand_preference == "All") && station["fields"]["price_#{current_user.fuel_preference.downcase}"].present?
+      update = (Date.today - station["fields"]["update"].to_date).to_i
+      puts(update)
+      ((current_user.brand_preference == station["fields"]["brand"] || current_user.brand_preference == "All")) && station["fields"]["price_#{current_user.fuel_preference.downcase}"].present? && update <= 8
     end
 
-    puts "*******@STATIONS CHECK AFTER FILTER ON FUEL TYPE********"
+    # puts "*******@STATIONS CHECK AFTER FILTER ON FUEL TYPE********"
     puts @stations
 
     # AVERAGE PREFERRED FUEL PRICE
-    puts "********CHECK @stations before MAP preferred_fuel_prices***********"
-    puts @stations
+    # puts "********CHECK @stations before MAP preferred_fuel_prices***********"
+    # puts @stations
 
     preferred_fuel_prices = @stations.map do |s|
       # puts s.inspect
       if s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f < 0.01
         s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f * 1000
       else
-        s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f
+        s["fields"]["price_#{current_user.fuel_preference.downcase}"].to_f.round(3)
       end
     end
 
     average = (preferred_fuel_prices.sum / @stations.count).round(3) if @stations.any?
-    best_price = preferred_fuel_prices.min
+    best_price = preferred_fuel_prices.minadd
 
     puts "****CHECK ARRAY preferred_fuel_prices******"
     puts preferred_fuel_prices
